@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const BoostMeterRing = styled.circle<{ $dashOffset: number }>`
     stroke-dashOffset: ${props => props.$dashOffset};
-
 `;
 
 export const BoostMeterInnerCircle = styled.circle``;

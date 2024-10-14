@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
 export const StatCardWrapper = styled.div`
-    background: green;
-    color: black;
-    height: 400px;
-    width: 600px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+  background: green;
+  color: #ffffff;
+  height: 150px;
+  width: 450px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  align-items: center;
+  bottom: 20px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const StatCardStatContainer = styled.div`

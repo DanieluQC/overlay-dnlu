@@ -11,7 +11,7 @@ export const PlayerStatCard = () => {
         <>
             {spectatedPlayer && (
                 <StatCardWrapper>
-                    <p>{spectatedPlayer.name}</p>
+                    <h2>{spectatedPlayer.name}</h2>
                     <StatCardStatContainer>
                         <div>
                             <StatCardStatName>GOALS</StatCardStatName>

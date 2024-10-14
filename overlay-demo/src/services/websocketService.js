@@ -74,15 +74,19 @@ export const WebsocketService = {
                 }
                 if (!WebsocketService.__subscribers[c].hasOwnProperty(e)) {
                     WebsocketService.__subscribers[c][e] = [];
-                    if (WebsocketService.webSocketConnected) {
-                        WebsocketService.send("wsRelay", "register", `${c}:${e}`);
-                    } else {
-                        WebsocketService.registerQueue.push(`${c}:${e}`);
-                    }
+                    //delay
+                    const sendWithDelay= () => {
+                        if (WebsocketService.webSocketConnected) {
+                            WebsocketService.send("wsRelay", "register", `${c}:${e}`);
+                        } else {
+                            setTimeout(sendWithDelay, 100);
+                        }
+                    };
+                    sendWithDelay();
                 }
                 WebsocketService.__subscribers[c][e].push(callback);
             });
-        })
+        });
     },
     clearEventCallbacks: function (channel, event) {
         if (WebsocketService.__subscribers.hasOwnProperty(channel) && WebsocketService.__subscribers[channel].hasOwnProperty(event)) {
