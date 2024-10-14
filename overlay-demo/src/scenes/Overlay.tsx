@@ -4,8 +4,8 @@ import { GameInfoContext } from "../contexts/GameInfoContext";
 import { UpdateState } from "../models/UpdateState/UpdateState";
 import { USPlayer } from "../models/UpdateState/USPlayer";
 import { PlayerStatCard } from "../components/PlayerStatCard/PlayerStatCard";
-//import { Scorebug } from "../components/Scorebug/Scorebug";
-//import { PlayerBoostMeter } from "../components/PlayerBoostMeter/PlayerBoostMeter";
+import { Scorebug } from "../components/Scorebug/Scorebug";
+import { PlayerBoostMeter } from "../components/PlayerBoostMeter/PlayerBoostMeter";
 
 export const Overlay = () => {
     const websocket = useContext(WebsocketContext);
@@ -24,7 +24,7 @@ export const Overlay = () => {
                 timeRemaining: data.game.time_seconds,
                 winner: data.game.winner,
                 players: updatedPlayers,
-                score: { 
+                score: {
                     blue: data.game.teams[0].score,
                     orange: data.game.teams[1].score,
                 },
@@ -32,7 +32,11 @@ export const Overlay = () => {
             });
         });
     });
-    //return <Scorebug />;
-    //return <PlayerBoostMeter />;
-    return <PlayerStatCard />;
+    return (
+        <>
+            <Scorebug />;
+            <PlayerBoostMeter />;
+            <PlayerStatCard />
+        </>
+    );
 };
