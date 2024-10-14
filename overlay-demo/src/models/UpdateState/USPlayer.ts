@@ -1,5 +1,5 @@
 export interface USPlayer {
-    assist: number;
+    assists: number;
     attacker: string;
     boost: number;
     cartouches: number;

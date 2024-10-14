@@ -28,7 +28,7 @@ const getGoalsFromPlayers = (players: USPlayer[]): number[] => {
 };
 
 const getAssistsFromPlayers = (players: USPlayer[]) => {
-    return players.map((player) => player.assist);
+    return players.map((player) => player.assists);
 };
 
 const getShotsFromPlayers = (players: USPlayer[]) => {

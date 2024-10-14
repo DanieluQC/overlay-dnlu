@@ -3,7 +3,8 @@ import { WebsocketContext } from "../contexts/WebsocketContext";
 import { GameInfoContext } from "../contexts/GameInfoContext";
 import { UpdateState } from "../models/UpdateState/UpdateState";
 import { USPlayer } from "../models/UpdateState/USPlayer";
-import { Scorebug } from "../components/Scorebug/Scorebug";
+import { PlayerStatCard } from "../components/PlayerStatCard/PlayerStatCard";
+//import { Scorebug } from "../components/Scorebug/Scorebug";
 //import { PlayerBoostMeter } from "../components/PlayerBoostMeter/PlayerBoostMeter";
 
 export const Overlay = () => {
@@ -31,6 +32,7 @@ export const Overlay = () => {
             });
         });
     });
-    return <Scorebug />;
+    //return <Scorebug />;
     //return <PlayerBoostMeter />;
+    return <PlayerStatCard />;
 };
