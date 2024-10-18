@@ -37,7 +37,7 @@ export const PlayerBoostMeter = () => {
                     y2={y2}
                     stroke="white"
                     strokeWidth="3"
-                    opacity="0.5"
+                    opacity="0.6"
                 />
             );
         }
@@ -47,35 +47,42 @@ export const PlayerBoostMeter = () => {
         <BoostMeterWrapper>
             {spectatedPlayer && (
                 <svg height={size} width={size}>
-                    <BoostMeterRing
-                        stroke={teamColor}
-                        strokeDasharray={`${circumference} ${circumference}`}
-                        $dashOffset={BoostService.getBoostBarCircumference(spectatedPlayer.boost, circumference)}
-                        strokeWidth={20}
-                        fill="transparent"
-                        r={radius}
-                        cx={size / 2}
-                        cy={size / 2}
-                        $teamColor={teamColor}
-                    />
-                    <BoostMeterInnerCircle
-                        r={radius - strokeWidth / 0.7}
-                        cx={size / 2}
-                        cy={size / 2}
-                        $teamColor={teamColor}
-                    />
-                    {createGridLines()}
-                    <BoostMeterText
-                        x={size / 2}
-                        y={size / 2}
-                        textAnchor="middle"
-                        dominantBaseline={"central"}
-                    >
-                        {spectatedPlayer.boost}
-                    </BoostMeterText>
+                    <defs>
+                        <filter id="shadow">
+                            <feDropShadow dx="0" dy="0" stdDeviation="3" floodOpacity="0.5" />
+                        </filter>
+                    </defs>
+                    <g filter="url(#shadow)">
+                        <BoostMeterRing
+                            stroke={teamColor}
+                            strokeDasharray={`${circumference} ${circumference}`}
+                            $dashOffset={BoostService.getBoostBarCircumference(spectatedPlayer.boost, circumference)}
+                            strokeWidth={strokeWidth}
+                            fill="transparent"
+                            r={radius}
+                            cx={size / 2}
+                            cy={size / 2}
+                            $teamColor={teamColor}
+                            transform={`rotate(90 ${size / 2} ${size / 2})`}
+                        />
+                        <BoostMeterInnerCircle
+                            r={radius - strokeWidth / 2}
+                            cx={size / 2}
+                            cy={size / 2}
+                            $teamColor={teamColor}
+                        />
+                        {createGridLines()}
+                        <BoostMeterText
+                            x={size / 2}
+                            y={size / 2}
+                            textAnchor="middle"
+                            dominantBaseline="central"
+                        >
+                            {spectatedPlayer.boost}
+                        </BoostMeterText>
+                    </g>
                 </svg>
             )}
         </BoostMeterWrapper>
-
     );
 };
