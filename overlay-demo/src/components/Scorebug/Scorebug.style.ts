@@ -51,18 +51,20 @@ export const ScorebugBlue = styled(TeamSection)`
 `;
 
 export const ScoreBoxOrange = styled.div`
-        background-color: white;
-        color: white;
-        padding: 5px 15px;
-        height: 80px;
-        width: 40px;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        right: -15px;
-        top: -8px;
-        clip-path: polygon(20% 0, 100% 0, 80% 100%, 0% 100%);
-        &::before {
+    background-color: white;
+    color: white;
+    padding: 5px 15px;
+    height: 80px;
+    width: 40px;
+    display: flex;
+    justify-content: center;  // Centra horizontalmente
+    align-items: center;      // Centra verticalmente
+    position: absolute;
+    right: -15px;
+    top: -8px;
+    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0% 100%);
+    
+    &::before {
         content: '';
         position: absolute;
         top: 2px;
@@ -72,21 +74,29 @@ export const ScoreBoxOrange = styled.div`
         background: black;
         z-index: -1;
         clip-path: polygon(20% 0, 100% 0, 80% 100%, 0% 100%);
-        }
-        `;
+    }
+
+    // Asegura que el contenido (el score) esté centrado y visible
+    & > * {
+        position: relative;
+        z-index: 1;
+    }
+`;
 export const ScoreBoxBlue = styled.div`
-        background-color: white;
-        color: white;
-        padding: 5px 15px;
-        height: 80px;
-        width: 40px;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        left: -15px;
-        top: -8px;
-        clip-path: polygon(0% 0, 80% 0, 100% 100%, 20% 100%);
-        &::before {
+    background-color: white;
+    color: white;
+    padding: 5px 15px;
+    height: 80px;
+    width: 40px;
+    display: flex;
+    justify-content: center;  // Centra horizontalmente
+    align-items: center;      // Centra verticalmente
+    position: absolute;
+    left: -15px;
+    top: -8px;
+    clip-path: polygon(0% 0, 80% 0, 100% 100%, 20% 100%);
+    
+    &::before {
         content: '';
         position: absolute;
         top: 2px;
@@ -96,7 +106,13 @@ export const ScoreBoxBlue = styled.div`
         background: black;
         z-index: -1;
         clip-path: polygon(0% 0, 80% 0, 100% 100%, 20% 100%);
-        }
+    }
+
+    // Asegura que el contenido (el score) esté centrado y visible
+    & > * {
+        position: relative;
+        z-index: 1;
+    }
 `;
 export const TeamName = styled.div`
     font-size: 30px;
