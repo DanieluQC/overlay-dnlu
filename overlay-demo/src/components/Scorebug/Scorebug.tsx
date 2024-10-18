@@ -12,7 +12,10 @@ import {
     BestOfText,
     ClockAndIndicatorsWrapper,
     ScorebugContainer,
-    ScoreBox,
+    ScoreBoxOrange,
+    ScoreBoxBlue,
+    ScorebugOrange,
+    ScorebugBlue,
 } from "./Scorebug.style";
 import { GameService } from "../../services/gameService";
 
@@ -21,8 +24,8 @@ export const Scorebug = () => {
 
     // Asumimos que estos datos vienen del contexto de GameInfo
     const orangeWins = 1; // Ejemplo: Orange ha ganado 1 partido
-    const blueWins = 2; // Ejemplo: Blue ha ganado 2 partidos
-    const totalMatches = 5; // Best of 5
+    const blueWins = 1; // Ejemplo: Blue ha ganado 2 partidos
+    const totalMatches = 7; // Best of 5
 
     const renderMatchIndicators = () => {
         return Array(totalMatches).fill(null).map((_, index) => {
@@ -42,12 +45,12 @@ export const Scorebug = () => {
         <ScorebugContainer>
             <ScorebugWrapper>
                 <TeamLogo src={process.env.PUBLIC_URL + "/images/orange_logo.png"} alt="Orange Team Logo" />
-                <TeamSection $isOrange>
+                <ScorebugOrange>
                     <TeamName>ORANGE</TeamName>
-                </TeamSection>
-                <ScoreBox $isOrange>
-                    <TeamScore>{gameInfo.score.orange}</TeamScore>
-                </ScoreBox>
+                    <ScoreBoxOrange>
+                        <TeamScore>{gameInfo.score.orange}</TeamScore>
+                    </ScoreBoxOrange>
+                </ScorebugOrange>
                 <ClockAndIndicatorsWrapper>
                     <ScorebugClock>
                         {GameService.getClockFromSeconds(gameInfo.timeRemaining, gameInfo.isOT)}
@@ -56,12 +59,12 @@ export const Scorebug = () => {
                         {renderMatchIndicators()}
                     </MatchIndicatorsWrapper>
                 </ClockAndIndicatorsWrapper>
-                <ScoreBox $isOrange={false}>
-                    <TeamScore>{gameInfo.score.blue}</TeamScore>
-                </ScoreBox>
-                <TeamSection $isOrange={false}>
+                <ScorebugBlue>
+                    <ScoreBoxBlue>
+                        <TeamScore>{gameInfo.score.blue}</TeamScore>
+                    </ScoreBoxBlue>
                     <TeamName>BLUE</TeamName>
-                </TeamSection>
+                </ScorebugBlue>
                 <TeamLogo src={process.env.PUBLIC_URL + "/images/blue_logo.png"} alt="Blue Team Logo" />
             </ScorebugWrapper>
             <BestOfText>Best of {totalMatches}</BestOfText>
