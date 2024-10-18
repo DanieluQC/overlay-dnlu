@@ -6,6 +6,7 @@ import { USPlayer } from "../models/UpdateState/USPlayer";
 import { PlayerStatCard } from "../components/PlayerStatCard/PlayerStatCard";
 import { Scorebug } from "../components/Scorebug/Scorebug";
 import { PlayerBoostMeter } from "../components/PlayerBoostMeter/PlayerBoostMeter";
+import { PlayerList } from "../components/PlayerList/PlayerList";
 
 export const Overlay = () => {
     const websocket = useContext(WebsocketContext);
@@ -37,6 +38,7 @@ export const Overlay = () => {
             <Scorebug />;
             <PlayerBoostMeter />;
             <PlayerStatCard />
+            <PlayerList />
         </>
     );
 };
