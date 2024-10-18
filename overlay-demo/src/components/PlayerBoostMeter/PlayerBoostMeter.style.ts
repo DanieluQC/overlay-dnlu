@@ -1,29 +1,32 @@
 import styled from "styled-components";
 
-export const BoostMeterRing = styled.circle<{ $dashOffset: number }>`
+export const BoostMeterRing = styled.circle<{ $dashOffset: number, $teamColor: string }>`
     stroke-dashOffset: ${props => props.$dashOffset};
+    stroke: ${props => props.$teamColor};
+    transition: stroke-dashoffset 0.3s ease;
 `;
 
-export const BoostMeterInnerCircle = styled.circle``;
+export const BoostMeterInnerCircle = styled.circle<{ $teamColor: string }>`
+    fill: ${props => props.$teamColor};
+    opacity: 0.4;
+    
+`;
 
 export const BoostMeterText = styled.text`
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 70px;
-    text-shadow: 1px 1px 10px grey;
-    z-index: 5;
+    font-family: 'Bahnschrift', Arial, sans-serif;
+    font-size: 50px;
+    font-wight: bold;
+    fill: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
 export const BoostMeterWrapper = styled.div`
-    background-color: #0000;
     position: absolute;
-    bottom: 50px;
-    right: 25px;
-    height: 320px;
-    width: 320px;
-    margin: 0px auto;
-    overflow: hidden;
-    transform-origin: 0 0;
-
+    bottom: 20px;
+    right: 20px;
+    height: 150px;
+    width: 150px;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
     svg > circle {
         transform: rotate(-90deg);
         transform-origin: 50% 50%;

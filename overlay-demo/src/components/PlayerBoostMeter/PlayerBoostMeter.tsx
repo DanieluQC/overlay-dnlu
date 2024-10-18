@@ -9,38 +9,42 @@ export const PlayerBoostMeter = () => {
 
     const spectatedPlayer = GameService.getPlayerFromTarget(gameInfo.players, gameInfo.target);
 
-    const normalizedRadius = 150 - 10 * 2;// inner radius - thickness of ring *2
+    const normalizedRadius = 110 - 10 * 2;// inner radius - thickness of ring *2
 
+    const getTeamColor = (team: number) => {
+        return team === 0 ? "#4CA3FF" : "#FF8C3F";
+    };
     const circumference = normalizedRadius * 2 * Math.PI;
 
+    const teamColor = spectatedPlayer ? getTeamColor(spectatedPlayer.team) : "#FFFFFF";
     return (
         <BoostMeterWrapper>
             {spectatedPlayer && (
                 <svg
-                    height={150 * 2} width={150 * 2}
+                    height={100 * 2} width={100 * 2}
                 >
                     <BoostMeterRing
-                        stroke={"#000000"}
+                        stroke={teamColor}
                         strokeDasharray={`${circumference} ${circumference}`}
                         $dashOffset={BoostService.getBoostBarCircumference(spectatedPlayer.boost, circumference)}
-                        strokeWidth={10}
+                        strokeWidth={20}
                         fill="transparent"
                         r={normalizedRadius}
-                        cx={150}
-                        cy={150}
+                        cx={100}
+                        cy={100}
+                        $teamColor={teamColor}
                     />
                     <BoostMeterInnerCircle
-                        fill={"#ffffff"}
-                        r={normalizedRadius - 10 / 2}
-                        cx="50%"
-                        cy="50%"
+                        r={90}
+                        cx="100"
+                        cy="100"
+                        $teamColor={teamColor}
                     />
                     <BoostMeterText
-                        fill="#000000"
-                        x="50%"
-                        y="50%"
+                        x="100"
+                        y="100"
                         textAnchor="middle"
-                        dy=".3em"
+                        dominantBaseline={"central"}
                     >
                         {spectatedPlayer.boost}
                     </BoostMeterText>
