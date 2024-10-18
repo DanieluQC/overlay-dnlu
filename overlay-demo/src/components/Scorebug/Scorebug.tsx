@@ -11,7 +11,8 @@ import {
     MatchIndicator,
     BestOfText,
     ClockAndIndicatorsWrapper,
-    ScorebugContainer
+    ScorebugContainer,
+    ScoreBox,
 } from "./Scorebug.style";
 import { GameService } from "../../services/gameService";
 
@@ -40,11 +41,13 @@ export const Scorebug = () => {
     return (
         <ScorebugContainer>
             <ScorebugWrapper>
-                <TeamLogo src={process.env.PUBLIC_URL + "/sources/orange-logo.png"} alt="Orange Team Logo" />
+                <TeamLogo src={process.env.PUBLIC_URL + "/images/orange_logo.png"} alt="Orange Team Logo" />
                 <TeamSection $isOrange>
                     <TeamName>ORANGE</TeamName>
-                    <TeamScore>{gameInfo.score.orange}</TeamScore>
                 </TeamSection>
+                <ScoreBox $isOrange>
+                    <TeamScore>{gameInfo.score.orange}</TeamScore>
+                </ScoreBox>
                 <ClockAndIndicatorsWrapper>
                     <ScorebugClock>
                         {GameService.getClockFromSeconds(gameInfo.timeRemaining, gameInfo.isOT)}
@@ -53,11 +56,13 @@ export const Scorebug = () => {
                         {renderMatchIndicators()}
                     </MatchIndicatorsWrapper>
                 </ClockAndIndicatorsWrapper>
-                <TeamSection $isOrange={false}>
+                <ScoreBox $isOrange={false}>
                     <TeamScore>{gameInfo.score.blue}</TeamScore>
+                </ScoreBox>
+                <TeamSection $isOrange={false}>
                     <TeamName>BLUE</TeamName>
                 </TeamSection>
-                <TeamLogo src={process.env.PUBLIC_URL + "/sources/blue-logo.png"} alt="Blue Team Logo" />
+                <TeamLogo src={process.env.PUBLIC_URL + "/images/blue_logo.png"} alt="Blue Team Logo" />
             </ScorebugWrapper>
             <BestOfText>Best of {totalMatches}</BestOfText>
         </ScorebugContainer>

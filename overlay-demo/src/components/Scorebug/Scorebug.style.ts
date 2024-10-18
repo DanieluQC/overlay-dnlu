@@ -24,20 +24,34 @@ export const TeamLogo = styled.img`
     width: 60px;
     height: 60px;
     margin: 0 10px;
+
 `;
 
 export const TeamSection = styled.div<{ $isOrange: boolean }>`
     display : flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 100%;
+    width: 400px;
+    height: 80%;
     background-color: ${props => props.$isOrange ? '#FF6600' : '#4169E1'};
     clip-path: ${props => props.$isOrange
-        ? 'polygon(0 0, 100% 0, 90% 100%, 0% 100%)'
-        : 'polygon(0 0, 100% 0, 100% 100%, 10% 100%)'};
+        ? 'polygon(10% 0, 100% 0, 90% 100%, 0% 100%)'
+        : 'polygon(0 0, 90% 0, 100% 100%, 10% 100%)'};
 `;
 
+export const ScoreBox = styled.div<{ $isOrange: boolean }>`
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100%;
+    background-color: green;
+    clip-path: ${props => props.$isOrange
+        ? 'polygon(35% 0%, 100% 0, 65% 100%, 0% 100%)'
+        : 'polygon(0% 0%, 65% 0%, 100% 100%, 35% 100%)'};
+    border-color: white;
+    border-width: 10px;
+`;
 export const TeamName = styled.div`
     font-size: 18px;
     font-weight: bold;
@@ -49,6 +63,7 @@ export const TeamScore = styled.div`
     font-size: 36px;
     font-weight: bold;
     color: white;
+
 `;
 
 export const ScorebugClock = styled.div`
@@ -94,8 +109,10 @@ export const BestOfText = styled.div`
     font-size: 24px;
     font-weight: bold;
     color: white;
+    width: 240px;
+    text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
-    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 0px;
