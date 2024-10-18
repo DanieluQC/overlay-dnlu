@@ -9,12 +9,12 @@ export const BoostMeterRing = styled.circle<{ $dashOffset: number, $teamColor: s
 export const BoostMeterInnerCircle = styled.circle<{ $teamColor: string }>`
     fill: ${props => props.$teamColor};
     opacity: 0.4;
-    
+
 `;
 
 export const BoostMeterText = styled.text`
     font-family: 'Bahnschrift', Arial, sans-serif;
-    font-size: 50px;
+    font-size: 90px;
     font-wight: bold;
     fill: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -22,8 +22,8 @@ export const BoostMeterText = styled.text`
 
 export const BoostMeterWrapper = styled.div`
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 120px;
+    right: 120px;
     height: 150px;
     width: 150px;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
