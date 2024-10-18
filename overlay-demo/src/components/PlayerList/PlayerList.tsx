@@ -1,30 +1,37 @@
 import React, { useContext } from 'react';
 import { GameInfoContext } from '../../contexts/GameInfoContext';
 import { GameService } from '../../services/gameService';
-import { BoostService } from '../../services/boostService';
-import { PlayerCard, PlayerListContainer, TeamColumn, PlayerName, BoostBar, BoostText } from './PlayerList.style';
+import { PlayerCard, PlayerListContainer, TeamColumn, PlayerName, BoostBar, BoostText, BoostInfo } from './PlayerList.style';
 
 export const PlayerList: React.FC = () => {
     const { gameInfo } = useContext(GameInfoContext);
 
-    const renderPlayerCard = (player: any) => (
-        <PlayerCard key={player.id} $teamColor={player.team === 0 ? '#4CA3FF' : '#FF8C3F'}>
-            <PlayerName>{player.name}</PlayerName>
-            <BoostBar $boost={player.boost} $teamColor={player.team === 0 ? '#4CA3FF' : '#FF8C3F'} />
-            <BoostText>{player.boost}</BoostText>
-        </PlayerCard>
-    );
+    const renderPlayerCard = (player: any, isBlueTeam: boolean) => {
+        const isActive = player.id === gameInfo.target;
+        const teamColor = isBlueTeam ? '#4CA3FF' : '#FF8C3F';
+
+        return (
+            <PlayerCard key={player.id} $teamColor={teamColor} $isActive={isActive} $isBlueTeam={isBlueTeam}>
+                <PlayerName $isActive={isActive}>{player.name}</PlayerName>
+                <BoostInfo $isBlueTeam={isBlueTeam}>
+                    <BoostText $isActive={isActive} $isBlueTeam={isBlueTeam}>{player.boost}</BoostText>
+
+                    <BoostBar $boost={player.boost} $teamColor={teamColor} $isActive={isActive} $isBlueTeam={isBlueTeam} />
+                </BoostInfo>
+            </PlayerCard >
+        );
+    };
 
     const orangeTeam = GameService.getOrangeTeam(gameInfo.players);
     const blueTeam = GameService.getBlueTeam(gameInfo.players);
 
     return (
         <PlayerListContainer>
-            <TeamColumn>
-                {orangeTeam.map(renderPlayerCard)}
+            <TeamColumn $isBlueTeam={false}>
+                {orangeTeam.map(player => renderPlayerCard(player, false))}
             </TeamColumn>
-            <TeamColumn>
-                {blueTeam.map(renderPlayerCard)}
+            <TeamColumn $isBlueTeam={true}>
+                {blueTeam.map(player => renderPlayerCard(player, true))}
             </TeamColumn>
         </PlayerListContainer>
     );
