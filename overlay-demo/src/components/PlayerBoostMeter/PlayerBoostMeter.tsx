@@ -12,7 +12,7 @@ export const PlayerBoostMeter = () => {
     const normalizedRadius = 110 - 10 * 2;// inner radius - thickness of ring *2
 
     const size = 200;
-    const strokeWidth = 10;
+    const strokeWidth = 20;
     const radius = (size + strokeWidth) / 2.5;
     const getTeamColor = (team: number) => {
         return team === 0 ? "#4CA3FF" : "#FF8C3F";
