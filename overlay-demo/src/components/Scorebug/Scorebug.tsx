@@ -65,14 +65,17 @@ export const Scorebug = () => {
 
 
     useEffect(() => {
-        if ((blueWins < winsNeeded) && (orangeWins < winsNeeded) && (orangeWins + blueWins < totalMatches)) {
-            setTotalGames((prev:number) => {
-                const newValue = blueWins+orangeWins+1;
-                localStorage.setItem('totalGames', newValue.toString());
-                return newValue;
-            });
-        }
-    }, [blueWins, orangeWins, winsNeeded, totalMatches]);   
+        const timeoutId = setTimeout(() => {
+            if ((blueWins < winsNeeded) && (orangeWins < winsNeeded) && (orangeWins + blueWins < totalMatches)) {
+                setTotalGames((prev:number) => {
+                    const newValue = blueWins+orangeWins+1;
+                    localStorage.setItem('totalGames', newValue.toString());
+                    return newValue;
+                });
+            }
+        }, 15000);
+        return () => clearTimeout(timeoutId);
+    }, [blueWins, orangeWins, winsNeeded, totalMatches]);    
     // Función para reiniciar manualmente (puedes llamarla desde donde necesites)
     const resetWins = () => {
         setTotalGames(1);
@@ -83,18 +86,22 @@ export const Scorebug = () => {
         localStorage.removeItem('totalGames');
     };
     const plusWinBlue = () => {
-        setBlueWins(prev => {
-            const newValue = prev + 1;
-            localStorage.setItem('blueWins', newValue.toString());
-            return newValue;
-        });
+        if (blueWins < winsNeeded && orangeWins + blueWins < totalMatches) {
+            setBlueWins(prev => {
+                const newValue = prev + 1;
+                localStorage.setItem('blueWins', newValue.toString());
+                return newValue;
+            });
+        }
     };
     const plusWinOrange = () => {
-        setOrangeWins(prev => {
-            const newValue = prev + 1;
-            localStorage.setItem('orangeWins', newValue.toString());
-            return newValue;
-        });
+        if (orangeWins < winsNeeded && orangeWins + blueWins < totalMatches) {
+            setOrangeWins(prev => {
+                const newValue = prev + 1;
+                localStorage.setItem('orangeWins', newValue.toString());
+                return newValue;
+            });
+        }
     };
 
     const renderMatchIndicators = () => {
