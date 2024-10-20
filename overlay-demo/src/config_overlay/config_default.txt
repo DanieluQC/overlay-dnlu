@@ -4,4 +4,4 @@
     "totalMatches": 3,
     "teamBlueColor": "#062fc4",
     "teamBlueName": "Azul"  
-  }
+}
