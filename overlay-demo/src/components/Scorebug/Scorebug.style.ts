@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const ScorebugContainer = styled.div`
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 800px;
-    margin: 0 auto;
+    left: 560px;
     padding: 0;
+    z-index:20;
 `;
 
 export const ScorebugWrapper = styled.div`
@@ -81,6 +83,11 @@ export const ScoreBoxOrange = styled.div`
         position: relative;
         z-index: 1;
     }
+    cursor: pointer;
+    user-select:none;
+    &:hover {
+    text-decoration: underline; // Opcional: añade un subrayado al pasar el mouse
+    }
 `;
 export const ScoreBoxBlue = styled.div`
     background-color: white;
@@ -113,8 +120,15 @@ export const ScoreBoxBlue = styled.div`
         position: relative;
         z-index: 1;
     }
+        cursor: pointer;
+    user-select:none;
+    &:hover {
+    text-decoration: underline; // Opcional: añade un subrayado al pasar el mouse
+    }
 `;
 export const TeamName = styled.div`
+    font-family: Courier, monospace;
+
     font-size: 30px;
     font-weight: bold;
     color: white;
@@ -181,4 +195,9 @@ export const BestOfText = styled.div`
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 0px;
+    cursor: pointer;
+    user-select:none;
+    &:hover {
+    text-decoration: underline; // Opcional: añade un subrayado al pasar el mouse
+    }
 `;

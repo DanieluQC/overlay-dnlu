@@ -8,6 +8,7 @@ export const PlayerListContainer = styled.div`
     left:20px;
     position:absolute;
     top:40px;
+    z-index:10;
 `;
 
 export const TeamColumn = styled.div<{ $isBlueTeam: boolean }>`

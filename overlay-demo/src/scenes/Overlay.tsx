@@ -11,7 +11,6 @@ import { PlayerList } from "../components/PlayerList/PlayerList";
 export const Overlay = () => {
     const websocket = useContext(WebsocketContext);
     const { gameInfo, setGameInfo } = useContext(GameInfoContext);
-
     useEffect(() => {
         websocket.subscribe("game", "update_state", (data: UpdateState) => {
             const updatedPlayers: USPlayer[] = Object.values(data.players).map(
@@ -35,7 +34,7 @@ export const Overlay = () => {
     });
     return (
         <>
-            <Scorebug />;
+            <Scorebug />
             <PlayerBoostMeter />;
             <PlayerStatCard />
             <PlayerList />

@@ -1,5 +1,5 @@
 import { GameContext } from "../models/contexts/GameContext";
-import {createContext} from "react";
+import { createContext } from "react";
 
 export interface GameInfoContextModel {
     gameInfo: GameContext;
@@ -23,6 +23,6 @@ export const DEFAULT_GAME_INFO: GameContext = {
 export const GameInfoContext = createContext<GameInfoContextModel>(
     {
         gameInfo: DEFAULT_GAME_INFO,
-        setGameInfo: (newGameInfo: GameContext) => {},
+        setGameInfo: (newGameInfo: GameContext) => { },
     }
 );
