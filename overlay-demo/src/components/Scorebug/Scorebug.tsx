@@ -3,7 +3,6 @@ import { GameInfoContext } from "../../contexts/GameInfoContext";
 import {
     ScorebugWrapper,
     TeamLogo,
-    TeamSection,
     TeamName,
     TeamScore,
     ScorebugClock,
@@ -29,43 +28,59 @@ export const Scorebug = () => {
         const saved = localStorage.getItem('blueWins');
         return saved !== null ? parseInt(saved, 10) : 0;
     });
-    const totalMatches = 5; // Best of 7
+    const totalMatches = 3; // Best of 7
+    const winsNeeded = totalMatches/2 +0.5;
     const [totalGames, setTotalGames] = useState(() => {
-        const games = 1; // First game
-
-        return games;
+        const saved = localStorage.getItem('totalGames');
+        return saved !== null ? parseInt(saved,10) : 1;    
     });
+
+    // Agregar un estado para controlar si se ha actualizado el puntaje en el último render
+    const [updated, setUpdated] = useState(false);
+
     useEffect(() => {
-        if (gameInfo.winner && gameInfo.winner !== '') {
-            if (gameInfo.score.orange > gameInfo.score.blue) {
-                setOrangeWins(prev => {
+        if (gameInfo.winner && gameInfo.winner !== '' && !updated) {
+            if (gameInfo.score.orange > gameInfo.score.blue && orangeWins < winsNeeded && orangeWins + blueWins < totalMatches) {
+                setOrangeWins((prev:number) => {
                     const newValue = prev + 1;
                     localStorage.setItem('orangeWins', newValue.toString());
+                    setUpdated(true);
                     return newValue;
                 });
-            } else if (gameInfo.score.blue > gameInfo.score.orange) {
-                setBlueWins(prev => {
+            } else if (gameInfo.score.blue > gameInfo.score.orange && blueWins < winsNeeded && orangeWins + blueWins < totalMatches) {
+                setBlueWins((prev:number) => {
                     const newValue = prev + 1;
                     localStorage.setItem('blueWins', newValue.toString());
+                    setUpdated(true);
                     return newValue;
                 });
             }
         }
-    }, [gameInfo.winner, gameInfo.score.orange, gameInfo.score.blue]);
+    }, [gameInfo.winner, gameInfo.score.orange, gameInfo.score.blue, orangeWins, blueWins, winsNeeded, totalMatches, updated]);
+
+    // Agregar un efecto para resetear el estado de actualizado cuando se cambia el ganador
     useEffect(() => {
-        if ((blueWins < totalMatches / 2) && (orangeWins < totalMatches / 2)) {
-            setTotalGames(prev => {
-                const newValue = blueWins + orangeWins + 1;
+        setUpdated(false);
+    }, [gameInfo.winner]);
+
+
+    useEffect(() => {
+        if ((blueWins < winsNeeded) && (orangeWins < winsNeeded) && (orangeWins + blueWins < totalMatches)) {
+            setTotalGames((prev:number) => {
+                const newValue = blueWins+orangeWins+1;
+                localStorage.setItem('totalGames', newValue.toString());
                 return newValue;
             });
         }
-    });
+    }, [blueWins, orangeWins, winsNeeded, totalMatches]);   
     // Función para reiniciar manualmente (puedes llamarla desde donde necesites)
     const resetWins = () => {
+        setTotalGames(1);
         setOrangeWins(0);
         setBlueWins(0);
         localStorage.removeItem('orangeWins');
         localStorage.removeItem('blueWins');
+        localStorage.removeItem('totalGames');
     };
     const plusWinBlue = () => {
         setBlueWins(prev => {
