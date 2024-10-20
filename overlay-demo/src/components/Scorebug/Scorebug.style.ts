@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { ConfigService } from "../../services/configServive";
 export const ScorebugContainer = styled.div`
     position: absolute;
     display: flex;
@@ -40,14 +40,16 @@ export const TeamSection = styled.div`
     position: relative;
     margin-top: 0px;
 `;
+
 export const ScorebugOrange = styled(TeamSection)`
-    background-color: #ff9900;
+    background-color: ${ConfigService.getTeamOrangeColor()};
     justify-content: flex-start;
     padding-left: 10px;
 `;
 
+
 export const ScorebugBlue = styled(TeamSection)`
-    background-color: blue;
+    background-color: ${ConfigService.getTeamBlueColor()};
     justify-content: flex-end;
     padding-right: 10px;
 `;
@@ -171,19 +173,18 @@ export const MatchIndicatorsWrapper = styled.div`
     padding-bottom: 5px;
 `;
 
-export const MatchIndicator = styled.div<{ $isOrangeWin: boolean; $isBlueWin: boolean }>`
+export const MatchIndicator = styled.div<{ $isOrangeWin: boolean, $isBlueWin: boolean }>`
     width: 50%;
     height: 8px;
     border-radius: 10%;
     margin: 0 3px;
     display: inline-block;
     background-color: ${props =>
-        props.$isOrangeWin ? '#FF6600'
-            : props.$isBlueWin ? '#4169E1'
+        props.$isOrangeWin ? ConfigService.getTeamOrangeColor()
+            : props.$isBlueWin ? ConfigService.getTeamBlueColor()
                 : 'rgba(255, 255, 255, 0.3)'};
     border: 1px solid white;
 `;
-
 export const BestOfText = styled.div`
     font-size: 24px;
     font-weight: bold;

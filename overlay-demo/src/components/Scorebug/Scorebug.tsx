@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { GameInfoContext } from "../../contexts/GameInfoContext";
 import {
     ScorebugWrapper,
@@ -17,6 +17,7 @@ import {
     ScorebugBlue,
 } from "./Scorebug.style";
 import { GameService } from "../../services/gameService";
+import { ConfigService } from "../../services/configServive";
 
 export const Scorebug = () => {
     const { gameInfo } = useContext(GameInfoContext);
@@ -28,7 +29,7 @@ export const Scorebug = () => {
         const saved = localStorage.getItem('blueWins');
         return saved !== null ? parseInt(saved, 10) : 0;
     });
-    const totalMatches = 3; // Best of 7
+    const totalMatches = ConfigService.getTotalMatches(); // Best of 7
     const winsNeeded = totalMatches/2 +0.5;
     const [totalGames, setTotalGames] = useState(() => {
         const saved = localStorage.getItem('totalGames');
@@ -37,7 +38,6 @@ export const Scorebug = () => {
 
     // Agregar un estado para controlar si se ha actualizado el puntaje en el último render
     const [updated, setUpdated] = useState(false);
-
     useEffect(() => {
         if (gameInfo.winner && gameInfo.winner !== '' && !updated) {
             if (gameInfo.score.orange > gameInfo.score.blue && orangeWins < winsNeeded && orangeWins + blueWins < totalMatches) {
@@ -123,7 +123,7 @@ export const Scorebug = () => {
             <ScorebugWrapper>
                 <TeamLogo src={process.env.PUBLIC_URL + "/images/orange_logo.png"} alt="Orange Team Logo" />
                 <ScorebugOrange>
-                    <TeamName>ORANGE</TeamName>
+                    <TeamName>{ConfigService.getTeamOrangeName()}</TeamName>
                     <ScoreBoxOrange onClick={plusWinOrange}>
                         <TeamScore>{gameInfo.score.orange}</TeamScore>
                     </ScoreBoxOrange>
@@ -140,7 +140,7 @@ export const Scorebug = () => {
                     <ScoreBoxBlue onClick={plusWinBlue}>
                         <TeamScore>{gameInfo.score.blue}</TeamScore>
                     </ScoreBoxBlue>
-                    <TeamName>22 - 1</TeamName>
+                    <TeamName>{ConfigService.getTeamBlueName()}</TeamName>
                 </ScorebugBlue>
                 <TeamLogo src={process.env.PUBLIC_URL + "/images/blue_logo.png"} alt="Blue Team Logo" />
             </ScorebugWrapper>
