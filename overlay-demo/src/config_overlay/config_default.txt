@@ -5,3 +5,20 @@
     "teamBlueColor": "#062fc4",
     "teamBlueName": "Azul"  
 }
+
+Primer partido:  9:20
+{
+    "teamOrangeName": "19",
+    "teamOrangeColor": "#bd4d08",
+    "totalMatches": 3,
+    "teamBlueColor": "#062fc4",
+    "teamBlueName": "22 - 2"  
+}
+ Partido 2: 9:40
+{
+    "teamOrangeName": "23 - 1",
+    "teamOrangeColor": "#bd4d08",
+    "totalMatches": 3,
+    "teamBlueColor": "#062fc4",
+    "teamBlueName": "24 - 1"  
+}
