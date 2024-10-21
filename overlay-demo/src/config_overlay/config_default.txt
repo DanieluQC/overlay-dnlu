@@ -6,7 +6,7 @@
     "teamBlueName": "Azul"  
 }
 
-Primer partido:  9:20
+Primer 1:  9:20
 {
     "teamOrangeName": "19",
     "teamOrangeColor": "#bd4d08",
