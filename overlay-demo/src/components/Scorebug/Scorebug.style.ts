@@ -17,7 +17,7 @@ export const ScorebugWrapper = styled.div`
     align-items: center;
     width: 100%;
     height: 120px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 1);
     padding: 0px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     clip-path: polygon(0% 0%, 100% 0, 100% 85%, 98% 100%, 2% 100%, 0% 85%);

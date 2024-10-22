@@ -6,6 +6,10 @@
     "teamBlueName": "Azul"  
 }
 
+Domingo
+9:20 pm 19 vs 22-2
+9:40 pm 23-1 vs 24-1
+
 Primer 1:  9:20
 {
     "teamOrangeName": "19",
@@ -22,3 +26,19 @@ Primer 1:  9:20
     "teamBlueColor": "#062fc4",
     "teamBlueName": "24 - 1"  
 }
+
+Lunes
+11:15 pm 22-1 vs 20-1
+
+{
+    "teamOrangeName": "22 - 1",
+    "teamOrangeColor": "#bd4d08",
+    "totalMatches": 3,
+    "teamBlueColor": "#062fc4",
+    "teamBlueName": "20 - 1"  
+}
+
+Miércoles 
+10 pm 23-2 vs 21-1
+10:20 pm 21-2 vs 24-1
+10:40 pm 21-1 vs 24-2

@@ -21,8 +21,8 @@ export const BoostMeterText = styled.text`
 
 export const BoostMeterWrapper = styled.div`
     position: absolute;
-    bottom: 120px;
-    right: 120px;
+    bottom: 153px;
+    right: 115px;
     height: 150px;
     width: 150px;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
