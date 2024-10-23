@@ -8,13 +8,14 @@ import {
     StatCardStatValue,
     PlayerName
 } from "./PlayerStatCard.style";
+import { ConfigService } from "../../services/configServive";
 
 export const PlayerStatCard = () => {
     const { gameInfo } = useContext(GameInfoContext);
     const spectatedPlayer = GameService.getPlayerFromTarget(gameInfo.players, gameInfo.target);
 
     const getTeamColor = (team: number) => {
-        return team === 0 ? "#4CA3FF" : "#FF8C3F";
+        return team === 0 ? ConfigService.getTeamBlueColor() : ConfigService.getTeamOrangeColor();
     };
 
     return (

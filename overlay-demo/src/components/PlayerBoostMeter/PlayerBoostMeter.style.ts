@@ -15,7 +15,6 @@ export const BoostMeterInnerCircle = styled.circle<{ $teamColor: string }>`
 export const BoostMeterText = styled.text`
     font-family: 'Bahnschrift', Arial, sans-serif;
     font-size: 90px;
-    font-wight: bold;
     fill: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;

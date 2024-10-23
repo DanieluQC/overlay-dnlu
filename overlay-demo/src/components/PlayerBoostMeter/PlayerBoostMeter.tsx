@@ -3,19 +3,18 @@ import { GameInfoContext } from "../../contexts/GameInfoContext"
 import { GameService } from "../../services/gameService";
 import { BoostMeterInnerCircle, BoostMeterRing, BoostMeterText, BoostMeterWrapper } from "./PlayerBoostMeter.style";
 import { BoostService } from "../../services/boostService";
+import { ConfigService } from "../../services/configServive";
 
 export const PlayerBoostMeter = () => {
     const { gameInfo } = useContext(GameInfoContext);
 
     const spectatedPlayer = GameService.getPlayerFromTarget(gameInfo.players, gameInfo.target);
 
-    const normalizedRadius = 110 - 10 * 2;// inner radius - thickness of ring *2
-
     const size = 200;
     const strokeWidth = 20;
     const radius = (size + strokeWidth) / 2.5;
     const getTeamColor = (team: number) => {
-        return team === 0 ? "#4CA3FF" : "#FF8C3F";
+        return team === 0 ? ConfigService.getTeamBlueColor() : ConfigService.getTeamOrangeColor();
     };
     const circumference = radius * 2 * Math.PI;
 
