@@ -29,16 +29,54 @@ export const Scorebug = () => {
         const saved = localStorage.getItem('blueWins');
         return saved !== null ? parseInt(saved, 10) : 0;
     });
+<<<<<<< HEAD
+    const totalMatches = 7; // Best of 7
+    const winsNeeded = Math.ceil(totalMatches / 2); // 4 victorias necesarias
+
+    const [totalGames, setTotalGames] = useState(() => {
+        const saved = localStorage.getItem('totalGames');
+        return saved !== null ? parseInt(saved, 10) : 1;
+=======
     const totalMatches = ConfigService.getTotalMatches(); // Best of 7
     const winsNeeded = totalMatches/2 +0.5;
     const [totalGames, setTotalGames] = useState(() => {
         const saved = localStorage.getItem('totalGames');
         return saved !== null ? parseInt(saved,10) : 1;    
+>>>>>>> 31d3b08c8ccab09df6d810a57e02f11bd704ca24
     });
 
     // Agregar un estado para controlar si se ha actualizado el puntaje en el último render
     const [updated, setUpdated] = useState(false);
     useEffect(() => {
+<<<<<<< HEAD
+        if ((gameInfo.winner && gameInfo.winner !== '') && (totalGames < totalMatches)) {
+            if ((orangeWins < winsNeeded) && (blueWins < winsNeeded)) {
+                if (gameInfo.score.orange > gameInfo.score.blue) {
+                    setOrangeWins((prev: number) => {
+                        const newValue = prev + 1;
+                        localStorage.setItem('orangeWins', newValue.toString());
+                        return newValue;
+                    });
+                } else if (gameInfo.score.blue > gameInfo.score.orange) {
+                    setBlueWins((prev: number) => {
+                        const newValue = prev + 1;
+                        localStorage.setItem('blueWins', newValue.toString());
+                        return newValue;
+                    });
+                };
+            }
+        }
+    });
+
+    useEffect(() => {
+        if ((orangeWins < winsNeeded) && (blueWins < winsNeeded)) {
+            setTotalGames(orangeWins + blueWins + 1);
+        }
+    });
+
+
+
+=======
         if (gameInfo.winner && gameInfo.winner !== '' && !updated) {
             if (gameInfo.score.orange > gameInfo.score.blue && orangeWins < winsNeeded && orangeWins + blueWins < totalMatches) {
                 setOrangeWins((prev:number) => {
@@ -77,16 +115,25 @@ export const Scorebug = () => {
         return () => clearTimeout(timeoutId);
     }, [blueWins, orangeWins, winsNeeded, totalMatches]);    
     // Función para reiniciar manualmente (puedes llamarla desde donde necesites)
+>>>>>>> 31d3b08c8ccab09df6d810a57e02f11bd704ca24
     const resetWins = () => {
         setTotalGames(1);
         setOrangeWins(0);
         setBlueWins(0);
+        setTotalGames(1);
         localStorage.removeItem('orangeWins');
         localStorage.removeItem('blueWins');
+<<<<<<< HEAD
+        localStorage.removeItem('setTotalGames');
+    };
+    const plusWinBlue = () => {
+        if (blueWins < winsNeeded) {
+=======
         localStorage.removeItem('totalGames');
     };
     const plusWinBlue = () => {
         if (blueWins < winsNeeded && orangeWins + blueWins < totalMatches) {
+>>>>>>> 31d3b08c8ccab09df6d810a57e02f11bd704ca24
             setBlueWins(prev => {
                 const newValue = prev + 1;
                 localStorage.setItem('blueWins', newValue.toString());
@@ -95,7 +142,11 @@ export const Scorebug = () => {
         }
     };
     const plusWinOrange = () => {
+<<<<<<< HEAD
+        if (orangeWins < winsNeeded) {
+=======
         if (orangeWins < winsNeeded && orangeWins + blueWins < totalMatches) {
+>>>>>>> 31d3b08c8ccab09df6d810a57e02f11bd704ca24
             setOrangeWins(prev => {
                 const newValue = prev + 1;
                 localStorage.setItem('orangeWins', newValue.toString());
