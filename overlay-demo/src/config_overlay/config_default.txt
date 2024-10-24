@@ -40,5 +40,14 @@ Lunes
 
 Miércoles 
 10 pm 23-2 vs 21-1
+
+{
+    "teamOrangeName": "22 - 1",
+    "teamOrangeColor": "#bd4d08",
+    "totalMatches": 3,
+    "teamBlueColor": "#062fc4",
+    "teamBlueName": "20 - 1"  
+}
+
 10:20 pm 21-2 vs 24-1
 10:40 pm 21-1 vs 24-2
