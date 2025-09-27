@@ -41,20 +41,21 @@ export const TeamSection = styled.div`
     margin-top: 0px;
 `;
 
-export const ScorebugOrange = styled(TeamSection)`
-    background-color: ${ConfigService.getTeamOrangeColor()};
+export const ScorebugBlue = styled(TeamSection)`
+    background-color: ${ConfigService.getTeamBlueColor()};
     justify-content: flex-start;
     padding-left: 10px;
 `;
 
 
-export const ScorebugBlue = styled(TeamSection)`
-    background-color: ${ConfigService.getTeamBlueColor()};
+export const ScorebugOrange
+ = styled(TeamSection)`
+    background-color: ${ConfigService.getTeamOrangeColor()};
     justify-content: flex-end;
     padding-right: 10px;
 `;
 
-export const ScoreBoxOrange = styled.div`
+export const ScoreBoxBlue = styled.div`
     background-color: white;
     color: white;
     padding: 5px 15px;
@@ -91,7 +92,7 @@ export const ScoreBoxOrange = styled.div`
     text-decoration: underline; // Opcional: añade un subrayado al pasar el mouse
     }
 `;
-export const ScoreBoxBlue = styled.div`
+export const ScoreBoxOrange = styled.div`
     background-color: white;
     color: white;
     padding: 5px 15px;
@@ -180,8 +181,8 @@ export const MatchIndicator = styled.div<{ $isOrangeWin: boolean, $isBlueWin: bo
     margin: 0 3px;
     display: inline-block;
     background-color: ${props =>
-        props.$isOrangeWin ? ConfigService.getTeamOrangeColor()
-            : props.$isBlueWin ? ConfigService.getTeamBlueColor()
+        props.$isBlueWin ? ConfigService.getTeamBlueColor()
+            : props.$isOrangeWin ? ConfigService.getTeamOrangeColor()
                 : 'rgba(255, 255, 255, 0.3)'};
     border: 1px solid white;
 `;

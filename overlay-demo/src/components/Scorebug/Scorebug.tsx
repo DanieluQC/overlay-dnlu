@@ -107,13 +107,14 @@ export const Scorebug = () => {
 
     const renderMatchIndicators = () => {
         return Array(totalMatches).fill(null).map((_, index) => {
-            const isOrangeWin = index < orangeWins;
-            const isBlueWin = index >= totalMatches - blueWins;
+            const isOrangeWin = index >= totalMatches - orangeWins;
+            const isBlueWin = index < blueWins;
             return (
                 <MatchIndicator
                     key={index}
-                    $isOrangeWin={isOrangeWin}
                     $isBlueWin={isBlueWin}
+                    $isOrangeWin={isOrangeWin}
+                    
                 />
             );
         });
@@ -122,13 +123,13 @@ export const Scorebug = () => {
     return (
         <ScorebugContainer>
             <ScorebugWrapper>
-                <TeamLogo src={process.env.PUBLIC_URL + "/images/orange_logo.png"} alt="Orange Team Logo" />
-                <ScorebugOrange>
-                    <TeamName>{ConfigService.getTeamOrangeName()}</TeamName>
-                    <ScoreBoxOrange onClick={plusWinOrange}>
-                        <TeamScore>{gameInfo.score.orange}</TeamScore>
-                    </ScoreBoxOrange>
-                </ScorebugOrange>
+                <TeamLogo src={process.env.PUBLIC_URL + "/images/blue_logo.png"} alt="Blue Team Logo" />
+                <ScorebugBlue>
+                    <TeamName>{ConfigService.getTeamBlueName()}</TeamName>
+                    <ScoreBoxBlue onClick={plusWinBlue}>
+                        <TeamScore>{gameInfo.score.blue}</TeamScore>
+                    </ScoreBoxBlue>
+                </ScorebugBlue>
                 <ClockAndIndicatorsWrapper>
                     <ScorebugClock>
                         {GameService.getClockFromSeconds(gameInfo.timeRemaining, gameInfo.isOT)}
@@ -137,13 +138,13 @@ export const Scorebug = () => {
                         {renderMatchIndicators()}
                     </MatchIndicatorsWrapper>
                 </ClockAndIndicatorsWrapper>
-                <ScorebugBlue>
-                    <ScoreBoxBlue onClick={plusWinBlue}>
-                        <TeamScore>{gameInfo.score.blue}</TeamScore>
-                    </ScoreBoxBlue>
-                    <TeamName>{ConfigService.getTeamBlueName()}</TeamName>
-                </ScorebugBlue>
-                <TeamLogo src={process.env.PUBLIC_URL + "/images/blue_logo.png"} alt="Blue Team Logo" />
+                <ScorebugOrange>
+                    <ScoreBoxOrange onClick={plusWinOrange}>
+                        <TeamScore>{gameInfo.score.orange}</TeamScore>
+                    </ScoreBoxOrange>
+                    <TeamName>{ConfigService.getTeamOrangeName()}</TeamName>
+                </ScorebugOrange>
+                <TeamLogo src={process.env.PUBLIC_URL + "/images/orange_logo.png"} alt="Orange Team Logo" />
             </ScorebugWrapper>
             <BestOfText onClick={resetWins}>Game {totalGames} | Best of {totalMatches}</BestOfText>
         </ScorebugContainer>
