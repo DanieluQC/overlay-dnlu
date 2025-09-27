@@ -61,4 +61,9 @@ plugin load sos
 ```
 - Uso frecuente del overlay: Presiona F2 dentro de rocket league -> Pestaña Plugins -> Plugin Manager(beta) -> Open PluginManager. Activa el checkbox del plugin SOS.
 ![Checkbox del SOS plugin](z_checkbox.png)
-![Overlay conectado](connected.png)
+![Overlay conectado](z_connected.png)
+
+... En proceso 
+- OBS 
+- Usos
+- Personalización
