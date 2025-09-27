@@ -16,7 +16,7 @@ Este proyecto integra un plugin(codeado por gboddin y modificado por SimpleAOB) 
 
 1. Clona o descarga este repositorio:  
 ```bash
-   git clone https://github.com/tu-usuario/SOS-Plugin-bakkes.git
+   git clone https://github.com/DanieluQC/overlay-dnlu.git
    ```
 2. Descomprime el archivo 'SOS-Plugin-bakkes.zip'
 3. Ubica el directorio de plugins de Bakkesmod
