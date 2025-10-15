@@ -1,6 +1,6 @@
 # 🧩 SOS Plugin + Overlay para Rocket League
 
-Este proyecto integra un plugin(codeado por gboddin y modificado por SimpleAOB) para Bakkesmod con un overlay visual (Creado por Danielu) en Node.js, diseñado para mejorar tu experiencia de juego en Rocket League en la Semana FIIS-UNI. A continuación, se detalla el proceso de instalación paso a paso.
+Este proyecto integra un plugin(codeado por gboddin y modificado por SimpleAOB) para Bakkesmod con un overlay visual (Creado por Danielu con guía en los videos de TitanHawk17) en Node.js, diseñado para mejorar tu experiencia de juego en Rocket League en la Semana FIIS-UNI. A continuación, se detalla el proceso de instalación paso a paso.
 
 ---
 
