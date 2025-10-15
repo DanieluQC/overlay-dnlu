@@ -123,7 +123,7 @@ export const Scorebug = () => {
     return (
         <ScorebugContainer>
             <ScorebugWrapper>
-                <TeamLogo src={process.env.PUBLIC_URL + "/images/blue_logo.png"} alt="Blue Team Logo" />
+                <TeamLogo src={process.env.PUBLIC_URL + ConfigService.getTeamBlueLogo()} alt="Blue Team Logo" />
                 <ScorebugBlue>
                     <TeamName>{ConfigService.getTeamBlueName()}</TeamName>
                     <ScoreBoxBlue onClick={plusWinBlue}>
@@ -144,7 +144,7 @@ export const Scorebug = () => {
                     </ScoreBoxOrange>
                     <TeamName>{ConfigService.getTeamOrangeName()}</TeamName>
                 </ScorebugOrange>
-                <TeamLogo src={process.env.PUBLIC_URL + "/images/orange_logo.png"} alt="Orange Team Logo" />
+                <TeamLogo src={process.env.PUBLIC_URL + ConfigService.getTeamOrangeLogo()} alt="Orange Team Logo" />
             </ScorebugWrapper>
             <BestOfText onClick={resetWins}>Game {totalGames} | Best of {totalMatches}</BestOfText>
         </ScorebugContainer>

@@ -6,4 +6,6 @@ export const ConfigService = {
   getTotalMatches: () => config.totalMatches,
   getTeamBlueName: () => config.teamBlueName,
   getTeamOrangeName: () => config.teamOrangeName,
+  getTeamBlueLogo: () => config.teamBlueLogo,
+  getTeamOrangeLogo: () => config.teamOrangeLogo
 };

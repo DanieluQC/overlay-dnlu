@@ -28,12 +28,13 @@ export const PlayerList: React.FC = () => {
 
     return (
         <PlayerListContainer>
-            <TeamColumn $isBlueTeam={false}>
-                {orangeTeam.map(player => renderPlayerCard(player, false))}
-            </TeamColumn>
             <TeamColumn $isBlueTeam={true}>
                 {blueTeam.map(player => renderPlayerCard(player, true))}
             </TeamColumn>
+            <TeamColumn $isBlueTeam={false}>
+                {orangeTeam.map(player => renderPlayerCard(player, false))}
+            </TeamColumn>
+            
         </PlayerListContainer>
     );
 };

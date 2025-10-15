@@ -130,12 +130,12 @@ export const ScoreBoxOrange = styled.div`
     }
 `;
 export const TeamName = styled.div`
-    font-family: Courier, monospace;
+    font-family: 'Arial Black', Arial, sans-serif;
 
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     color: white;
-    margin: 0 10px;
+    margin: 0 20px;
     z-index: 1;
 `;
 

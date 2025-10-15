@@ -15,7 +15,7 @@ export const TeamColumn = styled.div<{ $isBlueTeam: boolean }>`
     display: flex;
     flex-direction: column;
     width: 48%;
-    align-items: ${props => props.$isBlueTeam ? 'flex-end' : 'flex-start'};
+    align-items: ${props => props.$isBlueTeam ? 'flex-start' : 'flex-end'};
 `;
 
 const darkenColor = (color: string, amount: number): string => {

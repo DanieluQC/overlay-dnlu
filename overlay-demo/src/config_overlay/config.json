@@ -1,7 +1,11 @@
 {
-  "teamOrangeName": "22 - 1",
-  "teamOrangeColor": "#bd4d08",
-  "totalMatches": 3,
+  "teamBlueName": "22 - 1"  ,
   "teamBlueColor": "#062fc4",
-  "teamBlueName": "20 - 1"  
+  "teamBlueLogo": "/images/blue_logo.png",
+
+  "teamOrangeName": "23 - 1",
+  "teamOrangeColor": "#bd4d08",
+  "teamOrangeLogo": "/images/orange_logo.png",
+
+  "totalMatches": 3
 }
