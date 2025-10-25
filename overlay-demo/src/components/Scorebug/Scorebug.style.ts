@@ -10,14 +10,14 @@ export const ScorebugContainer = styled.div`
     padding: 0;
     z-index:20;
 `;
-
-export const ScorebugWrapper = styled.div`
+//fondo del scorebug:negro por default
+export const ScorebugWrapper = styled.div<{ isSpectator: boolean }>`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 120px;
-    background-color: rgba(0, 0, 0, 1);
+    height: ${props => props.isSpectator ? '120px' : '90px'};
+    background-color: ${props => props.isSpectator ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0)'};
     padding: 0px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     clip-path: polygon(0% 0%, 100% 0, 100% 85%, 98% 100%, 2% 100%, 0% 85%);
@@ -33,42 +33,44 @@ export const TeamLogo = styled.img`
 `;
 
 export const TeamSection = styled.div`
-    width: 250px;
+    width: 280px;
     height: 70px;
     display: flex;
     align-items: center;
     position: relative;
     margin-top: 0px;
 `;
-
-export const ScorebugBlue = styled(TeamSection)`
+export const ScorebugBlue = styled(TeamSection)<{ isSpectator: boolean }>`
     background-color: ${ConfigService.getTeamBlueColor()};
     justify-content: flex-start;
     padding-left: 10px;
+    margin-right: ${props => props.isSpectator ? '0px' : '80px'};
+    clip-path: ${props => props.isSpectator ? 'none' : 'polygon(0% 0%, 96% 0%, 100% 100%, 0% 100%)'};
 `;
 
 
-export const ScorebugOrange
- = styled(TeamSection)`
+export const ScorebugOrange= styled(TeamSection)<{ isSpectator: boolean }>`
     background-color: ${ConfigService.getTeamOrangeColor()};
     justify-content: flex-end;
     padding-right: 10px;
-`;
+    margin-left: ${props => props.isSpectator ? '0px' : '80px'};
+    clip-path: ${props => props.isSpectator ? 'none' : 'polygon(4% 0, 100% 0, 100% 100%, 0% 100%)'};
+`
 
-export const ScoreBoxBlue = styled.div`
+export const ScoreBoxBlue = styled.div<{ isSpectator: boolean }>`
     background-color: white;
     color: white;
     padding: 5px 15px;
     height: 80px;
     width: 40px;
-    display: flex;
+    display: ${props => props.isSpectator ? 'flex' : 'none'};
     justify-content: center;  // Centra horizontalmente
     align-items: center;      // Centra verticalmente
     position: absolute;
     right: -15px;
     top: -8px;
     clip-path: polygon(20% 0, 100% 0, 80% 100%, 0% 100%);
-    
+
     &::before {
         content: '';
         position: absolute;
@@ -92,13 +94,13 @@ export const ScoreBoxBlue = styled.div`
     text-decoration: underline; // Opcional: añade un subrayado al pasar el mouse
     }
 `;
-export const ScoreBoxOrange = styled.div`
+export const ScoreBoxOrange = styled.div<{ isSpectator: boolean }>`
     background-color: white;
     color: white;
     padding: 5px 15px;
     height: 80px;
     width: 40px;
-    display: flex;
+    display: ${props => props.isSpectator ? 'flex' : 'none'};
     justify-content: center;  // Centra horizontalmente
     align-items: center;      // Centra verticalmente
     position: absolute;
@@ -135,7 +137,7 @@ export const TeamName = styled.div`
     font-size: 40px;
     font-weight: bold;
     color: white;
-    margin: 0 20px;
+    margin: 0 0 px;
     z-index: 1;
 `;
 
@@ -145,10 +147,10 @@ export const TeamScore = styled.div`
     color: white;
 `;
 
-export const ScorebugClock = styled.div`
+export const ScorebugClock = styled.div<{ isSpectator: boolean }>`
     height: 100px;
     width: 200px;
-    display: flex;
+    display: ${props => props.isSpectator ? 'flex' : 'none'};
     justify-content: center;
     align-items: center;
     font-size: 60px;
@@ -156,22 +158,22 @@ export const ScorebugClock = styled.div`
     color: #ffffff;
 `;
 
-export const ClockAndIndicatorsWrapper = styled.div`
+export const ClockAndIndicatorsWrapper = styled.div<{ isSpectator: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 215px;
+    width: ${props => props.isSpectator ? '215px' : '350px'};
     top: 10px;
 `;
 
-export const MatchIndicatorsWrapper = styled.div`
+export const MatchIndicatorsWrapper = styled.div<{ isSpectator: boolean }>`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 95%;
-    margin:0px;
-    padding-bottom: 5px;
+    margin: ${props => props.isSpectator ? '0px' : '65px'} 0 0 0;
+    padding-bottom: ${props => props.isSpectator ? '5px' : 'px'};
 `;
 
 export const MatchIndicator = styled.div<{ $isOrangeWin: boolean, $isBlueWin: boolean }>`
@@ -186,7 +188,7 @@ export const MatchIndicator = styled.div<{ $isOrangeWin: boolean, $isBlueWin: bo
                 : 'rgba(255, 255, 255, 0.3)'};
     border: 1px solid white;
 `;
-export const BestOfText = styled.div`
+export const BestOfText = styled.div<{ isSpectator: boolean }>`
     font-size: 24px;
     font-weight: bold;
     color: white;
@@ -196,7 +198,7 @@ export const BestOfText = styled.div`
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 0px;
+    margin-top: ${props => props.isSpectator ? '0px' : '-5px'};
     cursor: pointer;
     user-select:none;
     &:hover {

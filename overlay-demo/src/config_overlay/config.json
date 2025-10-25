@@ -1,11 +1,12 @@
 {
   "teamBlueName": "22 - 1"  ,
-  "teamBlueColor": "#062fc4",
-  "teamBlueLogo": "/images/blue_logo.png",
+  "teamBlueColor": "#3962dd",
+  "teamBlueLogo": "/images/22-1.png",
 
-  "teamOrangeName": "23 - 1",
-  "teamOrangeColor": "#bd4d08",
+  "teamOrangeName": "24 - 1",
+  "teamOrangeColor": "#d7723e",
   "teamOrangeLogo": "/images/orange_logo.png",
 
-  "totalMatches": 3
+  "totalMatches": 7,
+  "isSpectator?": true
 }

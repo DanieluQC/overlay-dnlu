@@ -7,10 +7,11 @@ import { PlayerStatCard } from "../components/PlayerStatCard/PlayerStatCard";
 import { Scorebug } from "../components/Scorebug/Scorebug";
 import { PlayerBoostMeter } from "../components/PlayerBoostMeter/PlayerBoostMeter";
 import { PlayerList } from "../components/PlayerList/PlayerList";
+import { ConfigService } from "../services/configServive";
 
 export const Overlay = () => {
     const websocket = useContext(WebsocketContext);
-    const { gameInfo, setGameInfo } = useContext(GameInfoContext);
+    const { setGameInfo } = useContext(GameInfoContext);
     useEffect(() => {
         websocket.subscribe("game", "update_state", (data: UpdateState) => {
             const updatedPlayers: USPlayer[] = Object.values(data.players).map(
@@ -35,9 +36,9 @@ export const Overlay = () => {
     return (
         <>
             <Scorebug />
-            <PlayerBoostMeter />;
-            <PlayerStatCard />
-            <PlayerList />
+            {ConfigService.getIsSpectator() && <PlayerBoostMeter />}
+            {ConfigService.getIsSpectator() && <PlayerStatCard />}
+            {ConfigService.getIsSpectator() && <PlayerList />}
         </>
     );
 };

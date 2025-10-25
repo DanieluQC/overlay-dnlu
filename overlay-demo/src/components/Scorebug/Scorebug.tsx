@@ -21,6 +21,7 @@ import { ConfigService } from "../../services/configServive";
 
 export const Scorebug = () => {
     const { gameInfo } = useContext(GameInfoContext);
+    const isSpectator = ConfigService.getIsSpectator();
     const [orangeWins, setOrangeWins] = useState(() => {
         const saved = localStorage.getItem('orangeWins');
         return saved !== null ? parseInt(saved, 10) : 0;
@@ -33,7 +34,7 @@ export const Scorebug = () => {
     const winsNeeded = totalMatches/2 +0.5;
     const [totalGames, setTotalGames] = useState(() => {
         const saved = localStorage.getItem('totalGames');
-        return saved !== null ? parseInt(saved,10) : 1;    
+        return saved !== null ? parseInt(saved,10) : 1;
     });
 
     // Agregar un estado para controlar si se ha actualizado el puntaje en el último render
@@ -122,31 +123,31 @@ export const Scorebug = () => {
 
     return (
         <ScorebugContainer>
-            <ScorebugWrapper>
+            <ScorebugWrapper isSpectator={isSpectator}>
                 <TeamLogo src={process.env.PUBLIC_URL + ConfigService.getTeamBlueLogo()} alt="Blue Team Logo" />
-                <ScorebugBlue>
-                    <TeamName>{ConfigService.getTeamBlueName()}</TeamName>
-                    <ScoreBoxBlue onClick={plusWinBlue}>
+                <ScorebugBlue isSpectator={isSpectator}>
+                    <TeamName onClick={plusWinBlue} >{ConfigService.getTeamBlueName()}</TeamName>
+                    <ScoreBoxBlue isSpectator={isSpectator}>
                         <TeamScore>{gameInfo.score.blue}</TeamScore>
                     </ScoreBoxBlue>
                 </ScorebugBlue>
-                <ClockAndIndicatorsWrapper>
-                    <ScorebugClock>
+                <ClockAndIndicatorsWrapper isSpectator={isSpectator}>
+                    <ScorebugClock isSpectator={isSpectator}>
                         {GameService.getClockFromSeconds(gameInfo.timeRemaining, gameInfo.isOT)}
                     </ScorebugClock>
-                    <MatchIndicatorsWrapper>
+                    <MatchIndicatorsWrapper isSpectator={isSpectator}>
                         {renderMatchIndicators()}
                     </MatchIndicatorsWrapper>
                 </ClockAndIndicatorsWrapper>
-                <ScorebugOrange>
-                    <ScoreBoxOrange onClick={plusWinOrange}>
+                <ScorebugOrange isSpectator={isSpectator}>
+                    <ScoreBoxOrange isSpectator={isSpectator}>
                         <TeamScore>{gameInfo.score.orange}</TeamScore>
                     </ScoreBoxOrange>
-                    <TeamName>{ConfigService.getTeamOrangeName()}</TeamName>
+                    <TeamName onClick={plusWinOrange}>{ConfigService.getTeamOrangeName()}</TeamName>
                 </ScorebugOrange>
                 <TeamLogo src={process.env.PUBLIC_URL + ConfigService.getTeamOrangeLogo()} alt="Orange Team Logo" />
             </ScorebugWrapper>
-            <BestOfText onClick={resetWins}>Game {totalGames} | Best of {totalMatches}</BestOfText>
+            <BestOfText isSpectator={isSpectator} onClick={resetWins}>Game {totalGames} | Best of {totalMatches}</BestOfText>
         </ScorebugContainer>
     );
 };

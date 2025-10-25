@@ -7,5 +7,6 @@ export const ConfigService = {
   getTeamBlueName: () => config.teamBlueName,
   getTeamOrangeName: () => config.teamOrangeName,
   getTeamBlueLogo: () => config.teamBlueLogo,
-  getTeamOrangeLogo: () => config.teamOrangeLogo
+  getTeamOrangeLogo: () => config.teamOrangeLogo,
+  getIsSpectator: () => config['isSpectator?']
 };
